@@ -14,13 +14,13 @@ import android.widget.TextView;
 public class SensorActivity extends Activity implements SensorEventListener {
     private final SensorManager mSensorManager;
     private final Sensor mGyroscope;
-
-    TextView tvSpeed;
+    TextView tvGyro, tvSpeed;
 
     public SensorActivity(TextView textView ) {
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        tvSpeed = (TextView) findViewById(R.id.textView);
+        tvSpeed = (TextView) findViewById(R.id.SpeedTV);
+        tvGyro = (TextView) findViewById(R.id.GyroTV);
     }
 
     protected void onResume() {
@@ -40,7 +40,7 @@ public class SensorActivity extends Activity implements SensorEventListener {
         if (event.sensor.getType()==Sensor.TYPE_GYROSCOPE && event.timestamp != 0){
             // we only care about rotation about the z-axis (forward)
             float axisZ = event.values[2];
-            tvSpeed.setText( String.valueOf( axisZ ));
+            tvGyro.setText( String.valueOf( axisZ ));
             // send axisZ to client HoloLens
         }
     }

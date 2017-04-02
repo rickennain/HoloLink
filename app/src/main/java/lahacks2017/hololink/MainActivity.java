@@ -32,12 +32,11 @@ public class MainActivity extends AppCompatActivity{
 
                     BufferedReader in = new BufferedReader( // this thing would receive data on where to register hazard markers i think
                             new InputStreamReader(clientSocket.getInputStream()));
-                    startActivity(intent);
+                    startActivity(intent); //y u no start
 
                 } catch (Exception e) { e.printStackTrace(); }
             }
         });
-
-        thread.start(); //also wtf why is this wrong
+        thread.start();
     }
 }
